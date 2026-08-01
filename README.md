@@ -43,3 +43,4 @@ With **4+ years as a Sr. Cloud Solution Architect at Microsoft**, I partner with
 Always happy to talk **Cloud**, **AI**, and modern **DevOps** — let's connect! 💬✨
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nate-langston-470a4a20/)
+[![Blog](https://img.shields.io/badge/Blog-Read%20my%20posts-4cc2ff?style=for-the-badge&logo=github&logoColor=white)](https://naytron.github.io/naytron/)

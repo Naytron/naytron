@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <div class="post-card-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      <span class="dot" aria-hidden="true">•</span>
+      <span>{% assign words = content | number_of_words %}{{ words | divided_by: 200 | at_least: 1 }} min read</span>
+      <span class="dot" aria-hidden="true">•</span>
+      <span>{{ site.author.name }}</span>
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {%- if page.tags and page.tags.size > 0 -%}
+    <div class="tags">
+      {%- for tag in page.tags -%}
+        <span class="tag">{{ tag }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <a class="back-link" href="{{ '/' | relative_url }}">← All posts</a>
+  </footer>
+</article>
