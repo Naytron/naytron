@@ -2,9 +2,9 @@
 layout: default
 ---
 <section class="hero">
-  <p class="hero-kicker">☁️ Cloud &amp; AI Architecture Notes</p>
-  <h1 class="hero-title">Building <span class="grad">secure, scalable AI</span> on Microsoft Azure</h1>
-  <p class="hero-sub">{{ site.description }}</p>
+  <p class="hero-kicker"><span class="pulse" aria-hidden="true"></span> Cloud &amp; AI Architecture Notes</p>
+  <h1 class="hero-title">Building <span class="grad">secure, scalable&nbsp;AI</span><br>on Microsoft Azure</h1>
+  <p class="hero-sub">Field notes from a Sr. Cloud Solution Architect at Microsoft — real-world patterns, reference architectures, and lessons from taking enterprise AI to production.</p>
   <div class="pillars">
     {%- for pillar in site.pillars -%}
       <span class="pill">{{ pillar }}</span>
@@ -14,24 +14,26 @@ layout: default
 
 {{ content }}
 
-<section class="post-list" aria-label="Blog posts">
-  <h2 class="section-title">Latest posts</h2>
-  {%- for post in site.posts -%}
-  <article class="post-card">
-    <div class="post-card-meta">
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-      <span class="dot" aria-hidden="true">•</span>
-      <span>{% assign words = post.content | number_of_words %}{{ words | divided_by: 200 | at_least: 1 }} min read</span>
-    </div>
-    <h3 class="post-card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <p class="post-card-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 200 }}</p>
-    {%- if post.tags and post.tags.size > 0 -%}
-    <div class="tags">
-      {%- for tag in post.tags -%}
-        <span class="tag">{{ tag }}</span>
-      {%- endfor -%}
-    </div>
-    {%- endif -%}
+{%- assign featured = site.posts.first -%}
+<section class="featured" aria-label="Featured post">
+  <h2 class="section-title"><span>Latest</span></h2>
+  <article class="post-card featured-card">
+    <span class="featured-badge">New</span>
+    {%- include post-card.html post=featured -%}
+    <a class="card-link" href="{{ featured.url | relative_url }}" aria-label="{{ featured.title }}"></a>
   </article>
-  {%- endfor -%}
 </section>
+
+{%- if site.posts.size > 1 -%}
+<section class="post-list" aria-label="More posts">
+  <h2 class="section-title"><span>More posts</span><a class="see-all" href="{{ '/posts/' | relative_url }}">All posts →</a></h2>
+  <div class="card-grid">
+    {%- for post in site.posts offset: 1 -%}
+    <article class="post-card">
+      {%- include post-card.html post=post -%}
+      <a class="card-link" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}"></a>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}

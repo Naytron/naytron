@@ -1,0 +1,30 @@
+---
+layout: default
+title: Posts
+permalink: /posts/
+---
+
+<section class="archive">
+  <header class="archive-header">
+    <h1 class="post-title">All posts</h1>
+    <p class="hero-sub">{{ site.posts.size }} posts and counting — architecture notes, playbooks, and reference patterns.</p>
+  </header>
+
+  {%- assign by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+  {%- for year in by_year -%}
+  <h2 class="section-title"><span>{{ year.name }}</span></h2>
+  <div class="archive-list">
+    {%- for post in year.items -%}
+    <a class="archive-row" href="{{ post.url | relative_url }}">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+      <span class="archive-title">{{ post.title }}</span>
+      <span class="archive-tags">
+        {%- for tag in post.tags limit: 2 -%}
+          <span class="tag">{{ tag }}</span>
+        {%- endfor -%}
+      </span>
+    </a>
+    {%- endfor -%}
+  </div>
+  {%- endfor -%}
+</section>

@@ -1,0 +1,17 @@
+<div class="post-card-meta">
+  <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%b %-d, %Y" }}</time>
+  <span class="dot" aria-hidden="true">·</span>
+  <span>{% assign words = include.post.content | number_of_words %}{{ words | divided_by: 200 | at_least: 1 }} min read</span>
+</div>
+<h3 class="post-card-title"><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+<p class="post-card-excerpt">{{ include.post.description | default: include.post.excerpt | strip_html | truncate: 180 }}</p>
+<div class="card-bottom">
+  {%- if include.post.tags and include.post.tags.size > 0 -%}
+  <div class="tags">
+    {%- for tag in include.post.tags -%}
+      <span class="tag">{{ tag }}</span>
+    {%- endfor -%}
+  </div>
+  {%- endif -%}
+  <span class="read-more" aria-hidden="true">Read →</span>
+</div>
