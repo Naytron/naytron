@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <p>© {{ site.time | date: "%Y" }} {{ site.author.name }} · {{ site.author.title }}</p>
+  <p class="footer-links">
+    <a href="{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    <span class="dot" aria-hidden="true">•</span>
+    <a href="{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a>
+    <span class="dot" aria-hidden="true">•</span>
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </p>
+  <p class="footer-note">Opinions are my own and not those of my employer.</p>
+</footer>

@@ -1,0 +1,14 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">{{ site.title }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
+      <a href="{{ '/posts/' | relative_url }}" {% if page.url == '/posts/' or page.layout == 'post' %}class="active"{% endif %}>Posts</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
+      <a class="nav-cta" href="{{ site.author.github }}" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </div>
+</header>

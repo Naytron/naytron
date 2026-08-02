@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <span class="dot" aria-hidden="true">/</span>
+      <a href="{{ '/posts/' | relative_url }}">Posts</a>
+    </nav>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-card-meta">
+      <span class="avatar" aria-hidden="true">NL</span>
+      <span class="byline">{{ site.author.name }}</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      <span class="dot" aria-hidden="true">·</span>
+      <span>{% assign words = content | number_of_words %}{{ words | divided_by: 200 | at_least: 1 }} min read</span>
+    </div>
+    {%- if page.tags and page.tags.size > 0 -%}
+    <div class="tags">
+      {%- for tag in page.tags -%}
+        <span class="tag">{{ tag }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <nav class="post-pager" aria-label="Post navigation">
+    {%- if page.previous -%}
+    <a class="pager-card prev" href="{{ page.previous.url | relative_url }}">
+      <span class="pager-label">← Older</span>
+      <span class="pager-title">{{ page.previous.title }}</span>
+    </a>
+    {%- else -%}
+    <span class="pager-spacer" aria-hidden="true"></span>
+    {%- endif -%}
+    {%- if page.next -%}
+    <a class="pager-card next" href="{{ page.next.url | relative_url }}">
+      <span class="pager-label">Newer →</span>
+      <span class="pager-title">{{ page.next.title }}</span>
+    </a>
+    {%- else -%}
+    <span class="pager-spacer" aria-hidden="true"></span>
+    {%- endif -%}
+  </nav>
+
+  <footer class="post-footer">
+    <a class="back-link" href="{{ '/posts/' | relative_url }}">← All posts</a>
+  </footer>
+</article>

@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<section class="hero">
+  <p class="hero-kicker"><span class="pulse" aria-hidden="true"></span> Cloud &amp; AI Architecture Notes</p>
+  <h1 class="hero-title">Building <span class="grad">secure, scalable&nbsp;AI</span><br>on Microsoft Azure</h1>
+  <p class="hero-sub">Field notes from a Sr. Cloud Solution Architect at Microsoft — real-world patterns, reference architectures, and lessons from taking enterprise AI to production.</p>
+  <div class="pillars">
+    {%- for pillar in site.pillars -%}
+      <span class="pill">{{ pillar }}</span>
+    {%- endfor -%}
+  </div>
+</section>
+
+{{ content }}
+
+{%- assign featured = site.posts.first -%}
+<section class="featured" aria-label="Featured post">
+  <h2 class="section-title"><span>Latest</span></h2>
+  <article class="post-card featured-card">
+    <span class="featured-badge">New</span>
+    {%- include post-card.html post=featured -%}
+    <a class="card-link" href="{{ featured.url | relative_url }}" aria-label="{{ featured.title }}"></a>
+  </article>
+</section>
+
+{%- if site.posts.size > 1 -%}
+<section class="post-list" aria-label="More posts">
+  <h2 class="section-title"><span>More posts</span><a class="see-all" href="{{ '/posts/' | relative_url }}">All posts →</a></h2>
+  <div class="card-grid">
+    {%- for post in site.posts offset: 1 -%}
+    <article class="post-card">
+      {%- include post-card.html post=post -%}
+      <a class="card-link" href="{{ post.url | relative_url }}" aria-label="{{ post.title }}"></a>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}

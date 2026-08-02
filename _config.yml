@@ -1,0 +1,51 @@
+title: Nate Langston
+tagline: Cloud & AI Architecture Notes
+description: >-
+  Field notes from a Sr. Cloud Solution Architect at Microsoft — Azure AI Foundry,
+  agentic AI, GitHub Copilot, AI security & governance, and real-world reference
+  architectures for the enterprise and public sector.
+url: "https://naytron.github.io"
+baseurl: "/naytron"
+
+author:
+  name: Nate Langston
+  title: Sr. Cloud Solution Architect @ Microsoft
+  linkedin: https://www.linkedin.com/in/nate-langston-470a4a20/
+  github: https://github.com/Naytron
+
+permalink: /blog/:title/
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# Content pillars used for tag pills and future posts
+pillars:
+  - Azure AI Foundry
+  - GitHub Copilot
+  - Agentic AI
+  - AI Security & Governance
+  - Enterprise AI Patterns
+  - AI for Public Sector
+  - Demos & Reference Architectures
+
+exclude:
+  - README.md
+  - .github/
